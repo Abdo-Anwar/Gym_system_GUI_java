@@ -1,5 +1,5 @@
 
-package com.mycompany.guitest;
+package frontend;
 
 /**
  *
