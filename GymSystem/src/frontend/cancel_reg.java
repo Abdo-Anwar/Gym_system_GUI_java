@@ -1,11 +1,11 @@
 package frontend;
 
-public class Trainer_Login extends javax.swing.JFrame {
+public class cancel_reg extends javax.swing.JFrame {
 
     /**
-     * Creates new form Trainer_Login
+     * Creates new form cancel_reg
      */
-    public Trainer_Login() {
+    public cancel_reg() {
         initComponents();
     }
 
@@ -18,36 +18,44 @@ public class Trainer_Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
-        PassTExtField = new javax.swing.JTextField();
-        userNameTExtField = new javax.swing.JTextField();
-        label1 = new java.awt.Label();
         label4 = new java.awt.Label();
+        jButton2 = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        label1 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Trainer Login");
+        setTitle("Cancel Registration");
+
+        label4.setAlignment(java.awt.Label.CENTER);
+        label4.setBackground(new java.awt.Color(153, 255, 153));
+        label4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        label4.setName("UserLable"); // NOI18N
+        label4.setText("Member Id");
 
         jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Login");
-        jButton2.setToolTipText("loginButton");
+        jButton2.setText("Cancel Registration");
+        jButton2.setToolTipText("Cancel_RegistrationButton");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        PassTExtField.setToolTipText("PassText_filed");
-        PassTExtField.addActionListener(new java.awt.event.ActionListener() {
+        jTextField2.setToolTipText("PassText_filed");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PassTExtFieldActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
 
-        userNameTExtField.setToolTipText("UserText_filed");
-        userNameTExtField.addActionListener(new java.awt.event.ActionListener() {
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField3.setToolTipText("UserText_filed");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameTExtFieldActionPerformed(evt);
+                jTextField3ActionPerformed(evt);
             }
         });
 
@@ -56,14 +64,7 @@ public class Trainer_Login extends javax.swing.JFrame {
         label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         label1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         label1.setName("PasswordLable"); // NOI18N
-        label1.setText("Password");
-
-        label4.setAlignment(java.awt.Label.CENTER);
-        label4.setBackground(new java.awt.Color(153, 255, 153));
-        label4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        label4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        label4.setName("UserLable"); // NOI18N
-        label4.setText("UserName");
+        label1.setText("Class Id");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,8 +83,8 @@ public class Trainer_Login extends javax.swing.JFrame {
                             .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(userNameTExtField, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                            .addComponent(PassTExtField))))
+                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(jTextField2))))
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -92,11 +93,11 @@ public class Trainer_Login extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(userNameTExtField, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PassTExtField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -109,13 +110,13 @@ public class Trainer_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void PassTExtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassTExtFieldActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PassTExtFieldActionPerformed
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void userNameTExtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTExtFieldActionPerformed
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userNameTExtFieldActionPerformed
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,29 +135,29 @@ public class Trainer_Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Trainer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Trainer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Trainer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Trainer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Trainer_Login().setVisible(true);
+                new cancel_reg().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField PassTExtField;
     private javax.swing.JButton jButton2;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private java.awt.Label label1;
     private java.awt.Label label4;
-    private javax.swing.JTextField userNameTExtField;
     // End of variables declaration//GEN-END:variables
 }

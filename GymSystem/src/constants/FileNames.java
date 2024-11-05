@@ -1,5 +1,4 @@
-
-
+package constants;
 
 public interface FileNames { 
 String TRAINER_FILENAME = "Trainers.txt"; 
