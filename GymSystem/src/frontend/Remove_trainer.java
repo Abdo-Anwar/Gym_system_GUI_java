@@ -16,6 +16,14 @@ public class Remove_trainer extends javax.swing.JFrame {
         setLocationRelativeTo(null); 
 
     }
+    public boolean isTrainerInList(ArrayList<Trainer> trainerList, String id) {
+    for (Trainer trainer : trainerList) {
+        if (trainer.getSearchKey().equals(id)) {
+            return true; 
+        }
+    }
+    return false; 
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,18 +110,29 @@ public class Remove_trainer extends javax.swing.JFrame {
     }//GEN-LAST:event_IdTextFieldActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String id = IdTextField.getText();
+   String id = IdTextField.getText();
     ArrayList<Trainer> trainerList = admin.getListOfTrainers();
-       if (trainerList.contains(id)) { 
-                 admin.removeeTrainer(id);
-                JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " has been deleted", "Warning", JOptionPane.WARNING_MESSAGE);
+    int initialSize = trainerList.size();  
+
+        if (isTrainerInList(trainerList, id)) {
+            admin.removeeTrainer(id);
+            admin.logout();
+
+
+            ArrayList<Trainer> updatedTrainerList = admin.getListOfTrainers();
+            int updatedSize = updatedTrainerList.size();
+
+            if (updatedSize < initialSize) {  
+                JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " has been successfully deleted", "Message", JOptionPane.INFORMATION_MESSAGE);
             } else {
-               
-                JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id +" does not exist!", "Message", JOptionPane.INFORMATION_MESSAGE);
-           }
-    
-     
-     
+                JOptionPane.showMessageDialog(this, "Failed to delete Trainer with Id = " + id+"faild to removve", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            new AdminRoleGui(admin).setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " does not exist!", "Message", JOptionPane.INFORMATION_MESSAGE);
+        }
 
 
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -14,6 +14,7 @@ public class view_trainer extends javax.swing.JFrame {
     public view_trainer(AdminRole admin) {
         this.admin= admin;
         initComponents();
+        setLocationRelativeTo(null);
         populateTrainerTable();
     }
 
