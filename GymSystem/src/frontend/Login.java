@@ -5,11 +5,10 @@ package frontend;
 
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Jframe1
-     */
+    
     public Login() {
         initComponents();
+        setLocationRelativeTo(null); 
     }
 
      
@@ -71,16 +70,17 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         System.out.println(1); // Trainer ROle
+         new Trainer_Login().setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-System.out.println(2); //Admin Role 
+        new Admin_login().setVisible(true);
+        this.dispose();
+        //Admin Role 
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {

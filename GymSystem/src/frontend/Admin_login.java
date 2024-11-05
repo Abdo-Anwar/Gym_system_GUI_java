@@ -1,5 +1,9 @@
 package frontend;
 
+
+
+import javax.swing.JOptionPane;
+
 import constants.LoginCredentials;
 
 public class Admin_login extends javax.swing.JFrame  implements LoginCredentials {
@@ -7,6 +11,7 @@ public class Admin_login extends javax.swing.JFrame  implements LoginCredentials
   
     public Admin_login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     
@@ -119,9 +124,15 @@ public class Admin_login extends javax.swing.JFrame  implements LoginCredentials
     String username = UserTextfield.getText();
     String password = PassTextFiels.getText();
     
-    System.out.println("Username: " + username);
-    System.out.println("Password: " + password);
-
+     if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
+            JOptionPane.showMessageDialog(this, "Login Successful!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid username or password", "Login Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
+    
+   
+   
     }//GEN-LAST:event_AdminLoginButtonActionPerformed
 
     private void AdminLoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminLoginButtonMouseClicked
@@ -131,6 +142,7 @@ public class Admin_login extends javax.swing.JFrame  implements LoginCredentials
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -155,7 +167,7 @@ public class Admin_login extends javax.swing.JFrame  implements LoginCredentials
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Admin_login().setVisible(true);

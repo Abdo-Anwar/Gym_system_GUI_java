@@ -1,12 +1,16 @@
 package frontend;
 
-public class Trainer_Login extends javax.swing.JFrame {
+import constants.LoginCredentials;
+import javax.swing.JOptionPane;
+
+public class Trainer_Login extends javax.swing.JFrame implements LoginCredentials {
 
     /**
      * Creates new form Trainer_Login
      */
     public Trainer_Login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -106,7 +110,15 @@ public class Trainer_Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    String username = userNameTExtField.getText();
+    String password = PassTExtField.getText();
+    
+     if (username.equals(TRAINER_USERNAME) && password.equals(TRAINER_PASSWORD)) {
+            JOptionPane.showMessageDialog(this, "Login Successful!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid username or password", "Login Error", JOptionPane.ERROR_MESSAGE);
+            
+     }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void PassTExtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassTExtFieldActionPerformed
