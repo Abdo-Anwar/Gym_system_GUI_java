@@ -33,43 +33,41 @@ public class Trainer_Role extends javax.swing.JFrame {
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("view Trainer");
         jButton2.setToolTipText("View_trainer_PushButton");
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButton3.setBackground(new java.awt.Color(102, 102, 102));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Add Class");
         jButton3.setToolTipText("Add_Class_PushButton");
-        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButton4.setBackground(new java.awt.Color(102, 102, 102));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("View class");
         jButton4.setToolTipText("View_classPushButton");
-        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButton5.setBackground(new java.awt.Color(102, 102, 102));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Add Member");
         jButton5.setToolTipText("Add_Member_PushButton");
-        jButton5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(102, 102, 102));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("View Registaition");
         jButton6.setToolTipText("View_Registaition_PushButton");
-        jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButton7.setBackground(new java.awt.Color(102, 102, 102));
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Logout");
         jButton7.setToolTipText("Logout_PushButton");
-        jButton7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButton8.setBackground(new java.awt.Color(102, 102, 102));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("cancel Registrtation");
         jButton8.setToolTipText("cancel_Registrtation_PushButton");
-        jButton8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -80,7 +78,6 @@ public class Trainer_Role extends javax.swing.JFrame {
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("Register member for class");
         jButton9.setToolTipText("RegisterFor_class_PushButton");
-        jButton9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,6 +124,10 @@ public class Trainer_Role extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

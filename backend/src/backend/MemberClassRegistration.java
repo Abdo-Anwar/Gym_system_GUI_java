@@ -46,5 +46,14 @@ public class MemberClassRegistration extends info {
         classRegInfo = this.memberID+','+this.classID+','+this.registrationDate+','+this.status ;
         return classRegInfo;
     }
+    public void printRegister()
+    {
+        System.out.println("memberId  : "+this.memberID);
+        System.out.println("classId  : "+this.classID);
+        System.out.println("status  : "+this.status);
+        System.out.println("Date  : "+this.registrationDate);
+
+
+    }
     
 }
