@@ -1,5 +1,7 @@
 package frontend;
 
+import javax.swing.JOptionPane;
+import backend.TrainerDatabase;
 public class Add_trainer extends javax.swing.JFrame {
 
     /**
@@ -7,6 +9,7 @@ public class Add_trainer extends javax.swing.JFrame {
      */
     public Add_trainer() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -113,6 +116,11 @@ public class Add_trainer extends javax.swing.JFrame {
         jButton1.setText("Add");
         jButton1.setToolTipText("Add_Button");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,6 +199,42 @@ public class Add_trainer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       if (validateFields()) {
+        String id = jTextField1.getText();
+        String name = jTextField2.getText();
+        String email = jTextField3.getText();
+        String specialty = jTextField4.getText();
+        String phoneNumber = jTextField5.getText();
+        
+        /* if (TrainerDatabase.contains(id)) { 
+                JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+               
+                JOptionPane.showMessageDialog(this, "Trainer added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+           }*/
+        
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("Specialty: " + specialty);
+        System.out.println("Phone Number: " + phoneNumber);
+       }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private boolean validateFields() {
+        if (jTextField1.getText().trim().isEmpty() ||
+            jTextField2.getText().trim().isEmpty() ||
+            jTextField3.getText().trim().isEmpty() ||
+            jTextField4.getText().trim().isEmpty() ||
+            jTextField5.getText().trim().isEmpty()) {
+            
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true; 
+    }
+    
     /**
      * @param args the command line arguments
      */
