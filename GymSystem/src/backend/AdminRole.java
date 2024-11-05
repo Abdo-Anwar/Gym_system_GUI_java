@@ -5,11 +5,12 @@ import java.util.ArrayList;
 
 public class AdminRole {
 
-    private TrainerDatabase trainerDatabase;
+    private TrainerDatabase dataBaseNew;
+
     public AdminRole()
     {
-         this.trainerDatabase = new TrainerDatabase("src/backend/Trainers.txt");
-         this.trainerDatabase.readFromFile();
+         dataBaseNew = new TrainerDatabase("src/backend/Trainers.txt");
+dataBaseNew.readFromFile();
 
     }
     
@@ -41,16 +42,16 @@ public class AdminRole {
         
         
         Trainer t= new Trainer(traineId, name, email, phoneNumber, specialty);
-        if(trainerDatabase.contains(traineId)){
-            System.out.println("this tranier already exist.");
+        if(dataBaseNew.contains(traineId)){
+            System.out.println("this tranier already exict.");
         }else{
-            trainerDatabase.insertRecord(t);
+            dataBaseNew.insertRecord(t);
         }
      }
     public ArrayList<Trainer> getListOfTrainers(){
         
         ArrayList<Trainer> TrainerList= new ArrayList<>();
-        TrainerList = trainerDatabase.returnAllRecords();
+        TrainerList = dataBaseNew.returnAllRecords();
         return TrainerList;
     }
     public void removeeTrainer(String key){
@@ -59,13 +60,13 @@ public class AdminRole {
         return;
     }
         
-        if(!(trainerDatabase.contains(key))){
+        if(!(dataBaseNew.contains(key))){
             System.out.println("this key doesn't exist "+key );
         }else{
-            trainerDatabase.deleteRecord(key);
+            dataBaseNew.deleteRecord(key);
                     }
     }
     public void logout(){
-    trainerDatabase.saveToFile();
+    dataBaseNew.saveToFile();
     }
 }
