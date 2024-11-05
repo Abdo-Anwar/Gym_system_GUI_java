@@ -1,11 +1,29 @@
 package frontend;
 
 
-public class Add_class extends javax.swing.JFrame {
+import backend.Class;
+import backend.ClassDatabase;
+import backend.DataValidator;
+import backend.Trainer;
+import backend.TrainerRole;
 
-    /**
-     * Creates new form Add_class
-     */
+import javax.swing.*;
+
+public class Add_class extends javax.swing.JFrame
+{
+
+    String classId;
+    String className;
+    String trainerId;
+    int Duration;
+    int  maxParticipants;
+    boolean isCheckId;
+    boolean isCheckName;
+    boolean isCheckTrainerId;
+    boolean isCheckDuration;
+    boolean isCheckMax;
+
+
     public Add_class() {
         initComponents();
     }
@@ -120,7 +138,7 @@ public class Add_class extends javax.swing.JFrame {
         jLabel4.setToolTipText("Email_Label");
         jLabel4.setOpaque(true);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,9 +215,50 @@ public class Add_class extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        this.classId = jTextField1.getText();
+        isCheckId = DataValidator.isValidID(this.classId);
+        this.className = jTextField2.getText();
+        isCheckName = DataValidator.isValidID(this.className);
+        this.trainerId = jTextField3.getText();
+        isCheckTrainerId = DataValidator.isValidID(this.trainerId);
+        this.Duration = Integer.parseInt(jTextField4.getText());
+        isCheckDuration = this.Duration > 0;
+        this.maxParticipants = Integer.parseInt(jTextField5.getText());
+        isCheckMax = this.maxParticipants>0;
+
+        if(this.isCheckName ||this.isCheckId || this.isCheckTrainerId || this.isCheckDuration || this.isCheckMax)
+            JOptionPane.showMessageDialog(this," Invalid Inputs !! ");
+        else
+        {
+            ClassDatabase classDatabase = new ClassDatabase("C:\\Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Members.txt");
+            classDatabase.readFromFile();
+            if(classDatabase.contains(this.classId))
+                JOptionPane.showMessageDialog(this," Class already exist !! ");
+            else
+                {
+                    TrainerRole trainerRole  = new TrainerRole();
+                    boolean checkExistance =  false;
+                    for(Class classe  : trainerRole.getListOfClasses())
+                            {
+                                if(classe.getSearchKey().matches(this.classId)) checkExistance = true; break;
+
+                            }
+                    if(checkExistance)
+                        JOptionPane.showMessageDialog(this," Class already exist !! ");
+                    else if (! trainerRole.checkTrainerExistance(this.trainerId)) {
+                        JOptionPane.showMessageDialog(this," Trainer do not exist !! ");
+                    }
+                    else
+                    {
+                        trainerRole.addClass(this.classId, this.className, this.trainerId, this.Duration, this.maxParticipants);
+                        JOptionPane.showMessageDialog(this, " Class is added successfully !! ");
+                    }
+                }
+        }
+
+    }
 
     /**
      * @param args the command line arguments
@@ -238,6 +297,7 @@ public class Add_class extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    javax.swing.GroupLayout layout;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

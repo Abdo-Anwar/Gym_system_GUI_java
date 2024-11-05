@@ -1,12 +1,31 @@
 package frontend;
+import  backend.* ;
+
+import javax.swing.*;
 
 public class Add_member extends javax.swing.JFrame {
 
+    private String id;
+    private String name;
+    private String email;
+    private String phoneNumber;
+    private String membershipType;
+    private String status;
+    private boolean isCheckId;
+    private boolean isCheckName;
+    private boolean isCheckEmail;
+    private boolean isCheckPhone;
+    private boolean isCheckMembership;
+    private boolean isCheckStatus;
+    private TrainerRole trainerRole;
     /**
      * Creates new form Add_member
      */
-    public Add_member() {
+    public Add_member(TrainerRole trainerR) {
+        this.trainerRole  = trainerR;
         initComponents();
+        setLocationRelativeTo(null);
+
     }
 
     /**
@@ -133,6 +152,7 @@ public class Add_member extends javax.swing.JFrame {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
+       // setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -201,63 +221,97 @@ public class Add_member extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    }
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    }
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    }
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    }
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    }
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Add_member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Add_member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Add_member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Add_member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Add_member().setVisible(true);
-            }
-        });
     }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        this.id = jTextField1.getText();
+        isCheckId = DataValidator.isValidID(this.id);
+        this.name = jTextField2.getText();
+        isCheckName = DataValidator.isValidID(this.name);
+        this.email = jTextField3.getText();
+        isCheckEmail = DataValidator.isValidEmail(this.email);
+        this.membershipType = jTextField4.getText();
+        isCheckMembership = DataValidator.isValidMembershipType(this.membershipType);
+        this.phoneNumber = jTextField5.getText();
+        isCheckPhone = DataValidator.isValidPhoneNumber(this.phoneNumber);
+        this.status = jTextField6.getText();
+        isCheckStatus = DataValidator.isValidStatus(this.status);
+        if(this.isCheckName ||this.isCheckStatus || this.isCheckPhone || this.isCheckMembership || this.isCheckId || this.isCheckEmail)
+            JOptionPane.showMessageDialog(this," Invalid Inputs !! ");
+        else
+            {
+
+
+
+                            boolean checkExistance =  false;
+                            for(Member member  : this.trainerRole.getListOfMembers())
+                               {
+                                   if(member.getSearchKey().matches(this.id)) checkExistance = true; break;
+
+                               }
+                            if(checkExistance)
+                                JOptionPane.showMessageDialog(this," Member already exist !! ");
+                            else
+                                {
+                                    this.trainerRole.addMember(this.id, this.name, this.email, this.phoneNumber, this.membershipType, this.status);
+                                    JOptionPane.showMessageDialog(this, " Member is added successfully !! ");
+                                }
+
+            }
+
+
+
+    }
+
+//    public static void main(String args[]) {
+//
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Add_member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Add_member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Add_member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Add_member.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Add_member().setVisible(true);
+//
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -127,11 +127,16 @@ public class Trainer_RoleGUI extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+
+    }
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        new Add_member(trainer).setVisible(true);
+        this.setVisible(false);
+    }
 
     /**
      * @param args the command line arguments
