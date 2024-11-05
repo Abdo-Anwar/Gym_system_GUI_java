@@ -1,6 +1,8 @@
 package frontend;
 
 import backend.AdminRole;
+import backend.Trainer;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Remove_trainer extends javax.swing.JFrame {
@@ -101,16 +103,17 @@ public class Remove_trainer extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     String id = IdTextField.getText();
-     /* if (TrainerDatabase.contains(id)) { 
-                JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+    ArrayList<Trainer> trainerList = admin.getListOfTrainers();
+       if (trainerList.contains(id)) { 
+                 admin.removeeTrainer(id);
+                JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " has been deleted", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
                
-                JOptionPane.showMessageDialog(this, "Trainer added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-           }*/
+                JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id +" does not exist!", "Message", JOptionPane.INFORMATION_MESSAGE);
+           }
+    
      
-     admin.removeeTrainer(id);
-                     JOptionPane.showMessageDialog(this, "Trainer removed successfully!", "removed", JOptionPane.INFORMATION_MESSAGE);
-
+     
 
 
     }//GEN-LAST:event_jButton1ActionPerformed

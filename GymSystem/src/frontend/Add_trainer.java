@@ -1,8 +1,10 @@
 package frontend;
 
 import backend.AdminRole;
+import backend.Trainer;
 import javax.swing.JOptionPane;
 import backend.TrainerDatabase;
+import java.util.ArrayList;
 public class Add_trainer extends javax.swing.JFrame {
 
     /**
@@ -209,21 +211,22 @@ public class Add_trainer extends javax.swing.JFrame {
         String email = jTextField3.getText();
         String specialty = jTextField4.getText();
         String phoneNumber = jTextField5.getText();
-        
-        /* if (TrainerDatabase.contains(id)) { 
+        ArrayList<Trainer> trainerList = admin.getListOfTrainers();
+       if (trainerList.contains(id)) { 
                 JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
-               
-                JOptionPane.showMessageDialog(this, "Trainer added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-           }*/
-        admin.addTrainer(id, name, email, specialty, phoneNumber);
-   
+               admin.addTrainer(id, name, email, specialty, phoneNumber);
+                JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id +" has successfully added", "Message", JOptionPane.INFORMATION_MESSAGE);
+           }
         
+   
+        /*
         System.out.println("ID: " + id);
         System.out.println("Name: " + name);
         System.out.println("Email: " + email);
         System.out.println("Specialty: " + specialty);
         System.out.println("Phone Number: " + phoneNumber);
+       */
        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
