@@ -212,11 +212,13 @@ public class Add_trainer extends javax.swing.JFrame {
         String specialty = jTextField4.getText();
         String phoneNumber = jTextField5.getText();
         ArrayList<Trainer> trainerList = admin.getListOfTrainers();
+        
        if (trainerList.contains(id)) { 
                 JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
                admin.addTrainer(id, name, email, specialty, phoneNumber);
                 JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id +" has successfully added", "Message", JOptionPane.INFORMATION_MESSAGE);
+                admin.logout();
            }
         
    
