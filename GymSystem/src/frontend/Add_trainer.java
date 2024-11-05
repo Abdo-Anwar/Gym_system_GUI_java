@@ -16,7 +16,14 @@ public class Add_trainer extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-
+    public boolean isTrainerInList(ArrayList<Trainer> trainerList, String id) {
+    for (Trainer trainer : trainerList) {
+        if (trainer.getSearchKey().equals(id)) {
+            return true; 
+        }
+    }
+    return false; 
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -206,27 +213,34 @@ public class Add_trainer extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        if (validateFields()) {
-        String id = jTextField1.getText();
-        String name = jTextField2.getText();
-        String email = jTextField3.getText();
-        String specialty = jTextField4.getText();
-        String phoneNumber = jTextField5.getText();
-        ArrayList<Trainer> trainerList = admin.getListOfTrainers();
-       if (trainerList.contains(id)) { 
-                JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
-            } else {
-               admin.addTrainer(id, name, email, specialty, phoneNumber);
-                JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id +" has successfully added", "Message", JOptionPane.INFORMATION_MESSAGE);
-           }
+    String id = jTextField1.getText();
+    String name = jTextField2.getText();
+    String email = jTextField3.getText();
+    String specialty = jTextField4.getText();
+    String phoneNumber = jTextField5.getText();
+    
+    ArrayList<Trainer> trainerList = admin.getListOfTrainers();
+    int initialSize = trainerList.size(); 
+    
+    if (isTrainerInList(trainerList, id)) { 
+        JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " already exists!", "Warning", JOptionPane.WARNING_MESSAGE);
+    } else {
+        admin.addTrainer(id, name, email, specialty, phoneNumber);
+        admin.logout();
         
-   
-        /*
-        System.out.println("ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
-        System.out.println("Specialty: " + specialty);
-        System.out.println("Phone Number: " + phoneNumber);
-       */
+        
+        ArrayList<Trainer> updatedTrainerList = admin.getListOfTrainers();
+        int updatedSize = updatedTrainerList.size();
+
+        if (updatedSize > initialSize) {  
+            JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " has been successfully added", "Message", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to add Trainer with Id = " + id, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        new AdminRoleGui(admin).setVisible(true);
+        this.dispose();
+    }
        }
     }//GEN-LAST:event_jButton1ActionPerformed
 

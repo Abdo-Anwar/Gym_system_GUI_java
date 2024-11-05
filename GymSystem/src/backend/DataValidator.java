@@ -53,7 +53,7 @@ public class DataValidator {
 
    
     public static boolean isValidPhoneNumber(String phoneNumber) {
-        return phoneNumber != null && phoneNumber.matches("\\d{11}"); 
+        return phoneNumber != null && phoneNumber.matches("\\d{2,}"); 
     }
 
 }
