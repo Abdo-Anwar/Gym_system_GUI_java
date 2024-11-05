@@ -7,7 +7,7 @@
  */
 package backend;
 
-public class Member extends info
+public class Member implements info
 {
     private String id;
     private String name;
@@ -43,6 +43,16 @@ public class Member extends info
     {
 
         return this.id;
+
+    }
+    public void printMember()
+    {
+        System.out.println("id  : "+this.id);
+        System.out.println("name  : "+this.name);
+        System.out.println("email  : "+this.email);
+        System.out.println("phoneNumber  : "+this.phoneNumber);
+        System.out.println("membership  : "+this.membershipType);
+        System.out.println("status  : "+this.status);
 
     }
 }

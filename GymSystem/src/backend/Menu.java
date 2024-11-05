@@ -87,7 +87,8 @@ public static void AdminMenu(AdminRole admin, String Name){
                 case 2:
                     ArrayList<Member> membersLIst;
                    membersLIst = traniers.getListOfMembers();
-                    System.out.println(membersLIst);
+                    for(Member member : membersLIst)
+                        member.printMember();
                     break;
                 case 3:
                     UserInputs.addClassInput(traniers);
@@ -95,7 +96,8 @@ public static void AdminMenu(AdminRole admin, String Name){
                 case 4:
                    ArrayList<Class> classLIst;
                    classLIst= traniers.getListOfClasses();
-                    System.out.println(classLIst);
+                    for(Class classe : classLIst)
+                        classe.printClass();
                     break;
                 case 5:
                     UserInputs.registerMemberForClass(traniers);
@@ -105,10 +107,12 @@ public static void AdminMenu(AdminRole admin, String Name){
                     break;
                 case 7:
                   ArrayList<MemberClassRegistration> RegList=  traniers.getListOfRegistrations();
-                    System.out.println(RegList);
+                     for(MemberClassRegistration register : RegList)
+                            register.printRegister();
                     break;
                 case 8:
                     System.out.println("exit .. ");
+                    traniers.logout();
                     return;
                 default:
                     

@@ -4,7 +4,7 @@ package backend;
 import java.time.LocalDate;
 
 
-public class MemberClassRegistration extends info {
+public class MemberClassRegistration implements info {
     private String  memberID;
     private String  classID;
     private String   status ;
@@ -45,6 +45,15 @@ public class MemberClassRegistration extends info {
         String classRegInfo;
         classRegInfo = this.memberID+','+this.classID+','+this.registrationDate+','+this.status ;
         return classRegInfo;
+    }
+    public void printRegister()
+    {
+        System.out.println("memberId  : "+this.memberID);
+        System.out.println("classId  : "+this.classID);
+        System.out.println("status  : "+this.status);
+        System.out.println("Date  : "+this.registrationDate);
+
+
     }
     
 }

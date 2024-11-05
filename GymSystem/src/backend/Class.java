@@ -2,7 +2,7 @@
 package backend;
 
 
-public class Class extends info
+public class Class implements info
 {
     
     private String classid;
@@ -13,6 +13,7 @@ public class Class extends info
 
     public Class(String classid, String className, String trainerID, int duration, int availableSeats)
             {
+
                 this.classid = classid;
                 this.className = className;
                 this.trainerID = trainerID;
@@ -44,5 +45,14 @@ public class Class extends info
                 return this.classid;
 
             }
+    public void printClass()
+    {
+        System.out.println("id  : "+this.classid);
+        System.out.println("name  : "+this.className);
+        System.out.println("trainerId  : "+this.trainerID);
+        System.out.println("duration  : "+this.duration);
+        System.out.println("seats  : "+this.availableSeats);
+
+    }
 
 }

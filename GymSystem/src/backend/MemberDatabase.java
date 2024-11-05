@@ -149,7 +149,8 @@ public class MemberDatabase extends dataBase
             FileWriter saveRecords =  new FileWriter(this.fileName);
             for(Member temp :this.records)
             {
-                saveRecords.write(temp.lineRepresentation());
+                saveRecords.write(temp.lineRepresentation()+"\n");
+
             }
             saveRecords.close();
         }

@@ -3,7 +3,7 @@
 package backend;
 
 
-public class Trainer extends info
+public class Trainer implements info
 {
 
     private String id;
@@ -44,4 +44,13 @@ public class Trainer extends info
                 return this.id;
 
             }
+    public void printTrainer()
+    {
+        System.out.println("id  : "+this.id);
+        System.out.println("name  : "+this.name);
+        System.out.println("email  : "+this.email);
+        System.out.println("phoneNumber  : "+this.phoneNumber);
+        System.out.println("speciality  : "+this.specialty);
+
+    }
 }

@@ -9,11 +9,23 @@ public class TrainerRole
       private MemberDatabase memberDatabase;
       private MemberClassRegistrationDatabase memberClassRegistrationDatabase;
 
+
     public TrainerRole()
     {
-        classDatabase = new ClassDatabase("Classes.txt");
-        memberDatabase = new MemberDatabase("Members.txt");
-        memberClassRegistrationDatabase = new MemberClassRegistrationDatabase("Registrations.txt");
+        classDatabase = new ClassDatabase("C:\\Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Classes.txt");
+        memberDatabase = new MemberDatabase("C:/Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Members.txt");
+        memberClassRegistrationDatabase = new MemberClassRegistrationDatabase("C:\\Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Registrations.txt");
+        classDatabase.readFromFile();
+        memberDatabase.readFromFile();
+        memberClassRegistrationDatabase.readFromFile();
+    }
+    public boolean checkTrainerExistance(String trainerId)
+    {
+        TrainerDatabase trainerDatabase = new TrainerDatabase("C:\\Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Trainers.txt");
+        trainerDatabase.readFromFile();
+        if (trainerDatabase.contains(trainerId)) return true;
+        else  return  false;
+
     }
     public void addMember (String memberID, String name, String membershipType, String email, String phoneNumber, String status)
     {   
@@ -57,8 +69,10 @@ public class TrainerRole
     
     
     public void addClass (String classID, String className, String trainerID, int duration, int maxParticipants)
-    {
-         if (!DataValidator.isValidID(classID)) {
+    {  TrainerDatabase trainerDatabase = new TrainerDatabase("C:\\Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Trainers.txt");
+        trainerDatabase.readFromFile();
+
+        if (!DataValidator.isValidID(classID)) {
         System.out.println("Invalid Class ID. Please enter an alphanumeric ID of length 4-10.");
         return;
     }
@@ -68,7 +82,9 @@ public class TrainerRole
         return;
     }
 
-    if (!DataValidator.isValidID(trainerID)) {
+    if ((!(DataValidator.isValidID(trainerID)))|| !trainerDatabase.contains(trainerID)) {
+
+         System.out.println(trainerDatabase.contains(trainerID));
         System.out.println("Invalid Trainer ID. Please enter an alphanumeric ID of length 4-10.");
         return;
     }
@@ -91,7 +107,7 @@ public class TrainerRole
     {
         return classDatabase.returnAllRecords();
     }
-    public Boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate) {
+    public boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate) {
         
         if (!DataValidator.isValidID(memberID)) {
             System.out.println("Invalid Member ID. Please enter a valid ID.");
@@ -104,10 +120,11 @@ public class TrainerRole
         }
 
         
-        Boolean memberCheck = memberDatabase.contains(memberID);
-        Boolean classCheck = classDatabase.contains(classID);
+        boolean memberCheck = memberDatabase.contains(memberID);
+        boolean classCheck = classDatabase.contains(classID);
+        boolean checkRegister = memberClassRegistrationDatabase.contains(memberID+classID);
 
-        if (memberCheck && classCheck) {
+        if (memberCheck && classCheck && checkRegister) {
             
             if (!DataValidator.isValidDate(registrationDate.toString())) {
                 System.out.println("Invalid Registration Date. Please enter a date that is today or later.");
@@ -135,7 +152,7 @@ public class TrainerRole
 
         return false;
     }
-    public Boolean cancelRegistration (String memberID, String classID)
+    public boolean cancelRegistration (String memberID, String classID)
     {
         if (!DataValidator.isValidID(memberID)) {
         System.out.println("Invalid Member ID. Please enter a valid ID.");
@@ -147,7 +164,7 @@ public class TrainerRole
         return false;
     }
         
-        Boolean checkRegister = memberClassRegistrationDatabase.contains(memberID+classID);
+        boolean checkRegister = memberClassRegistrationDatabase.contains(memberID+classID);
 
         if (checkRegister)
         {

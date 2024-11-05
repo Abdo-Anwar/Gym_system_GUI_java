@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 
 public class AdminRole {
-    private TrainerDatabase dataBaseNew = new TrainerDatabase("Trainers.txt");
+    private TrainerDatabase dataBaseNew = new TrainerDatabase("C:\\Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Trainers.txt");
 
-    public AdminRole() { }
+    public AdminRole()
+    { }
     
     public void addTrainer(String traineId,String name ,String email,String specialty,String phoneNumber){
     if (!DataValidator.isValidID(traineId)) {

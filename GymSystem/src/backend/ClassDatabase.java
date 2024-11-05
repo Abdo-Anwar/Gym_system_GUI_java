@@ -150,7 +150,7 @@ public class ClassDatabase extends dataBase
             FileWriter saveRecords =  new FileWriter(this.fileName);
             for(Class temp :this.records)
             {
-                saveRecords.write(temp.lineRepresentation());
+                saveRecords.write(temp.lineRepresentation()+"\n");
             }
             saveRecords.close();
         }
