@@ -6,8 +6,7 @@ import java.util.ArrayList;
 public class AdminRole {
     private TrainerDatabase dataBaseNew = new TrainerDatabase("src/backend/Trainers.txt");
 
-    public AdminRole()
-    { }
+    public AdminRole(){ }
     
     public void addTrainer(String traineId,String name ,String email,String specialty,String phoneNumber){
     if (!DataValidator.isValidID(traineId)) {
@@ -44,6 +43,7 @@ public class AdminRole {
         }
      }
     public ArrayList<Trainer> getListOfTrainers(){
+        
         ArrayList<Trainer> TrainerList= new ArrayList<>();
         TrainerList = dataBaseNew.returnAllRecords();
         return TrainerList;

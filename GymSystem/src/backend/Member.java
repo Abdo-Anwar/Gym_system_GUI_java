@@ -1,10 +1,4 @@
-/**
 
- *  Member Class
-
- *  this  class contain all the attributes of the member
-
- */
 package backend;
 
 public class Member implements info
