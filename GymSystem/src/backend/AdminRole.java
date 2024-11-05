@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 
 public class AdminRole {
-    private TrainerDatabase dataBaseNew = new TrainerDatabase("src/backend/Trainers.txt");
-
+     
     public AdminRole()
-    { }
+    {
+         dataBaseNew = new TrainerDatabase("src/backend/Trainers.txt");
+
+
+    }
     
     public void addTrainer(String traineId,String name ,String email,String specialty,String phoneNumber){
     if (!DataValidator.isValidID(traineId)) {

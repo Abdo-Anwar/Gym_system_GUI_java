@@ -13,15 +13,15 @@ public class TrainerRole
     public TrainerRole()
     {
         classDatabase = new ClassDatabase("src/backend/Classes.txt");
-        memberDatabase = new MemberDatabase("src/backend/Members.txt");
-        memberClassRegistrationDatabase = new MemberClassRegistrationDatabase("src/backend/Registrations.txt");
+        memberDatabase = new MemberDatabase("C:/Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Members.txt");
+        memberClassRegistrationDatabase = new MemberClassRegistrationDatabase("C:\\Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Registrations.txt");
         classDatabase.readFromFile();
         memberDatabase.readFromFile();
         memberClassRegistrationDatabase.readFromFile();
     }
     public boolean checkTrainerExistance(String trainerId)
     {
-        TrainerDatabase trainerDatabase = new TrainerDatabase("src/backend/Trainers.txt");
+        TrainerDatabase trainerDatabase = new TrainerDatabase("C:\\Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Trainers.txt");
         trainerDatabase.readFromFile();
         if (trainerDatabase.contains(trainerId)) return true;
         else  return  false;
@@ -69,7 +69,7 @@ public class TrainerRole
     
     
     public void addClass (String classID, String className, String trainerID, int duration, int maxParticipants)
-    {  TrainerDatabase trainerDatabase = new TrainerDatabase("src/backend/Trainers.txt");
+    {  TrainerDatabase trainerDatabase = new TrainerDatabase("C:\\Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Trainers.txt");
         trainerDatabase.readFromFile();
 
         if (!DataValidator.isValidID(classID)) {
@@ -174,7 +174,7 @@ public class TrainerRole
             int registrationDays = currentData.compareTo(registration.getRegistrationDate());
             if(registrationDays>=0 && registrationDays<=3)
                 {
-                    registration.settRegistrationStatus("canceled");
+                    memberClassRegistrationDatabase.deleteRecord(memberID+classID);
                     classe.setAvailableSeats(classe.getAvailableSeats()+1);
                     return true;
                 }

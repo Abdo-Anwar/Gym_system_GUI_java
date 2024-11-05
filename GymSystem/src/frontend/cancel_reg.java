@@ -1,11 +1,23 @@
 package frontend;
 
+import backend.*;
+import backend.Class;
+
+import javax.swing.*;
+import java.time.LocalDate;
+
 public class cancel_reg extends javax.swing.JFrame {
 
     /**
      * Creates new form cancel_reg
      */
-    public cancel_reg() {
+    private  String memberId;
+    private  String classId;
+    private TrainerRole trainerRole;
+    boolean isCheckId;
+    public cancel_reg(TrainerRole trainerRole) {
+
+        this.trainerRole = trainerRole;
         initComponents();
     }
 
@@ -21,7 +33,7 @@ public class cancel_reg extends javax.swing.JFrame {
         label4 = new java.awt.Label();
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         label1 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,11 +63,11 @@ public class cancel_reg extends javax.swing.JFrame {
             }
         });
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField3.setToolTipText("UserText_filed");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField1.setToolTipText("UserText_filed");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
 
@@ -83,7 +95,7 @@ public class cancel_reg extends javax.swing.JFrame {
                             .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                             .addComponent(jTextField2))))
                 .addGap(26, 26, 26))
         );
@@ -93,7 +105,7 @@ public class cancel_reg extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,56 +119,112 @@ public class cancel_reg extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        if(validateFields())
+            {
+                this.memberId = jTextField1.getText();
+                isCheckId = DataValidator.isValidID(this.memberId);
+                this.classId = jTextField2.getText();
+                isCheckId = DataValidator.isValidID(this.classId);
+
+
+                if (!(this.isCheckId))
+                    JOptionPane.showMessageDialog(this, " Invalid Inputs !! ");
+                else {
+
+
+                    boolean checkExistance1 = false;
+                    boolean checkExistance2 = false;
+                    boolean checkExistance3 = false;
+
+                    for (Member member : this.trainerRole.getListOfMembers()) {
+                        member.printMember();
+                        if (member.getSearchKey().matches(this.memberId)) checkExistance1 = true;
+                        break;
+
+                    }
+                    for (Class classe : this.trainerRole.getListOfClasses()) {
+                        if (classe.getSearchKey().matches(this.classId)) checkExistance2 = true;
+                        break;
+
+                    }
+                    for (MemberClassRegistration registration : this.trainerRole.getListOfRegistrations())
+                    {
+                        if (registration.getSearchKey().matches(this.memberId + this.classId))  checkExistance3 = true;
+                        break;
+                    }
+                    if (!checkExistance3)
+                        JOptionPane.showMessageDialog(this, "    Registration do not exist !! ");
+                    else if (!(checkExistance2 && checkExistance1))
+                        JOptionPane.showMessageDialog(this, " Member and Class do not  exist !! ");
+                    else if (!checkExistance1)
+                        JOptionPane.showMessageDialog(this, " Member  do not  exist !! ");
+                    else if (!checkExistance2)
+                        JOptionPane.showMessageDialog(this, " Class  do not  exist !! ");
+                    else {
+                        this.trainerRole.cancelRegistration(this.memberId, this.classId);
+                        JOptionPane.showMessageDialog(this, " Member is added successfully !! ");
+                    }
+
+                }
+            }// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextField1ActionPerformed
+        private boolean validateFields() {
+            if (jTextField1.getText().trim().isEmpty() ||
+                    jTextField2.getText().trim().isEmpty() )
+                     {
 
+                JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+            return true;
+        }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new cancel_reg().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(cancel_reg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new cancel_reg().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private java.awt.Label label1;
     private java.awt.Label label4;
     // End of variables declaration//GEN-END:variables

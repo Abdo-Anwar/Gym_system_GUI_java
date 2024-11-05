@@ -12,20 +12,23 @@ import javax.swing.*;
 public class Add_class extends javax.swing.JFrame
 {
 
-    String classId;
-    String className;
-    String trainerId;
-    int Duration;
-    int  maxParticipants;
-    boolean isCheckId;
-    boolean isCheckName;
-    boolean isCheckTrainerId;
-    boolean isCheckDuration;
-    boolean isCheckMax;
+    private String classId;
+    private String className;
+    private String trainerId;
+    private int Duration;
+    private int  maxParticipants;
+    private boolean isCheckId;
+    private boolean isCheckName;
+    private boolean isCheckTrainerId;
+    private boolean isCheckDuration;
+    private boolean isCheckMax;
+    private TrainerRole trainerRole;
+    
 
-
-    public Add_class() {
+    public Add_class(TrainerRole trainerRole) {
+        this.trainerRole  = trainerRole;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -217,83 +220,88 @@ public class Add_class extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)
     {
-        this.classId = jTextField1.getText();
-        isCheckId = DataValidator.isValidID(this.classId);
-        this.className = jTextField2.getText();
-        isCheckName = DataValidator.isValidID(this.className);
-        this.trainerId = jTextField3.getText();
-        isCheckTrainerId = DataValidator.isValidID(this.trainerId);
-        this.Duration = Integer.parseInt(jTextField4.getText());
-        isCheckDuration = this.Duration > 0;
-        this.maxParticipants = Integer.parseInt(jTextField5.getText());
-        isCheckMax = this.maxParticipants>0;
+        if(validateFields()) {
+            this.classId = jTextField1.getText();
+            isCheckId = DataValidator.isValidID(this.classId);
+            this.className = jTextField2.getText();
+            isCheckName = DataValidator.isValidID(this.className);
+            this.trainerId = jTextField3.getText();
+            isCheckTrainerId = DataValidator.isValidID(this.trainerId);
+            this.Duration = Integer.parseInt(jTextField4.getText());
+            isCheckDuration = this.Duration > 0;
+            this.maxParticipants = Integer.parseInt(jTextField5.getText());
+            isCheckMax = this.maxParticipants > 0;
 
-        if(this.isCheckName ||this.isCheckId || this.isCheckTrainerId || this.isCheckDuration || this.isCheckMax)
-            JOptionPane.showMessageDialog(this," Invalid Inputs !! ");
-        else
-        {
-            ClassDatabase classDatabase = new ClassDatabase("C:\\Users\\User\\Desktop\\Gym_system_GUI_java\\backend\\src\\backend\\Members.txt");
-            classDatabase.readFromFile();
-            if(classDatabase.contains(this.classId))
-                JOptionPane.showMessageDialog(this," Class already exist !! ");
-            else
-                {
-                    TrainerRole trainerRole  = new TrainerRole();
-                    boolean checkExistance =  false;
-                    for(Class classe  : trainerRole.getListOfClasses())
-                            {
-                                if(classe.getSearchKey().matches(this.classId)) checkExistance = true; break;
+            if (!(this.isCheckName && this.isCheckId && this.isCheckTrainerId && this.isCheckDuration && this.isCheckMax))
+                JOptionPane.showMessageDialog(this, " Invalid Inputs !! ");
+            else {
 
-                            }
-                    if(checkExistance)
-                        JOptionPane.showMessageDialog(this," Class already exist !! ");
-                    else if (! trainerRole.checkTrainerExistance(this.trainerId)) {
-                        JOptionPane.showMessageDialog(this," Trainer do not exist !! ");
-                    }
-                    else
-                    {
-                        trainerRole.addClass(this.classId, this.className, this.trainerId, this.Duration, this.maxParticipants);
-                        JOptionPane.showMessageDialog(this, " Class is added successfully !! ");
-                    }
+
+                boolean checkExistance = false;
+                for (Class classe : this.trainerRole.getListOfClasses()) {
+                    if (classe.getSearchKey().matches(this.classId)) checkExistance = true;
+                    break;
+
                 }
+                if (checkExistance)
+                    JOptionPane.showMessageDialog(this, " Class already exist !! ");
+                else if (!trainerRole.checkTrainerExistance(this.trainerId)) {
+                    JOptionPane.showMessageDialog(this, " Trainer do not exist !! ");
+                } else {
+                    trainerRole.addClass(this.classId, this.className, this.trainerId, this.Duration, this.maxParticipants);
+                    JOptionPane.showMessageDialog(this, " Class is added successfully !! ");
+                }
+
+            }
         }
 
     }
+    private boolean validateFields() {
+        if (jTextField1.getText().trim().isEmpty() ||
+                jTextField2.getText().trim().isEmpty() ||
+                jTextField3.getText().trim().isEmpty() ||
+                jTextField4.getText().trim().isEmpty() ||
+                jTextField5.getText().trim().isEmpty()) {
 
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Add_class.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Add_class.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Add_class.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Add_class.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Add_class().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Add_class.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Add_class.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Add_class.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Add_class.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Add_class().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
