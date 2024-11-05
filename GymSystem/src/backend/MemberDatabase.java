@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class MemberDatabase extends dataBase
 {
-    private ArrayList<Member> records= new ArrayList<>();
+    private ArrayList<Member> records= new ArrayList<Member>();
     private String fileName;
     public MemberDatabase(String fileName)
     {

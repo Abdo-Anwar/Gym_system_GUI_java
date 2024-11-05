@@ -25,6 +25,7 @@ public class Add_member extends javax.swing.JFrame {
         this.trainerRole  = trainerR;
         initComponents();
         setLocationRelativeTo(null);
+        
 
     }
 
@@ -127,6 +128,11 @@ public class Add_member extends javax.swing.JFrame {
         jButton1.setText("Add");
         jButton1.setToolTipText("Add_Button");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(153, 255, 153));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -152,7 +158,6 @@ public class Add_member extends javax.swing.JFrame {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-       // setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -220,32 +225,9 @@ public class Add_member extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-
-    }
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-
-    }
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-
-    }
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-
-    }
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-
-    }
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-
-    }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        this.id = jTextField1.getText();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       if(validateFields())
+       {this.id = jTextField1.getText();
         isCheckId = DataValidator.isValidID(this.id);
         this.name = jTextField2.getText();
         isCheckName = DataValidator.isValidID(this.name);
@@ -257,7 +239,7 @@ public class Add_member extends javax.swing.JFrame {
         isCheckPhone = DataValidator.isValidPhoneNumber(this.phoneNumber);
         this.status = jTextField6.getText();
         isCheckStatus = DataValidator.isValidStatus(this.status);
-        if(this.isCheckName ||this.isCheckStatus || this.isCheckPhone || this.isCheckMembership || this.isCheckId || this.isCheckEmail)
+        if(!(this.isCheckName && this.isCheckStatus && this.isCheckPhone && this.isCheckMembership && this.isCheckId && this.isCheckEmail))
             JOptionPane.showMessageDialog(this," Invalid Inputs !! ");
         else
             {
@@ -267,6 +249,7 @@ public class Add_member extends javax.swing.JFrame {
                             boolean checkExistance =  false;
                             for(Member member  : this.trainerRole.getListOfMembers())
                                {
+                                   member.printMember();
                                    if(member.getSearchKey().matches(this.id)) checkExistance = true; break;
 
                                }
@@ -281,8 +264,97 @@ public class Add_member extends javax.swing.JFrame {
             }
 
 
+       }
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
 
     }
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+
+    }
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+
+    }
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+
+    }
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+
+    }
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+
+    }
+     private boolean validateFields() {
+        if (jTextField1.getText().trim().isEmpty() ||
+            jTextField2.getText().trim().isEmpty() ||
+            jTextField3.getText().trim().isEmpty() ||
+            jTextField4.getText().trim().isEmpty() ||
+            jTextField5.getText().trim().isEmpty()) {
+            
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true; 
+    }
+//    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)
+//    {
+//        this.id = jTextField1.getText();
+//        isCheckId = DataValidator.isValidID(this.id);
+//        this.name = jTextField2.getText();
+//        isCheckName = DataValidator.isValidID(this.name);
+//        this.email = jTextField3.getText();
+//        isCheckEmail = DataValidator.isValidEmail(this.email);
+//        this.membershipType = jTextField4.getText();
+//        isCheckMembership = DataValidator.isValidMembershipType(this.membershipType);
+//        this.phoneNumber = jTextField5.getText();
+//        isCheckPhone = DataValidator.isValidPhoneNumber(this.phoneNumber);
+//        this.status = jTextField6.getText();
+//        isCheckStatus = DataValidator.isValidStatus(this.status);
+//        if(this.isCheckName ||this.isCheckStatus || this.isCheckPhone || this.isCheckMembership || this.isCheckId || this.isCheckEmail)
+//            JOptionPane.showMessageDialog(this," Invalid Inputs !! ");
+//        else
+//            {
+//
+//
+//
+//                            boolean checkExistance =  false;
+//                            for(Member member  : this.trainerRole.getListOfMembers())
+//                               {
+//                                   if(member.getSearchKey().matches(this.id)) checkExistance = true; break;
+//
+//                               }
+//                            if(checkExistance)
+//                                JOptionPane.showMessageDialog(this," Member already exist !! ");
+//                            else
+//                                {
+//                                    this.trainerRole.addMember(this.id, this.name, this.email, this.phoneNumber, this.membershipType, this.status);
+//                                    JOptionPane.showMessageDialog(this, " Member is added successfully !! ");
+//                                }
+//
+//            }
+//
+//
+//
+//    }
+//        private boolean validateFields() {
+//        if (jTextField1.getText().trim().isEmpty() ||
+//            jTextField2.getText().trim().isEmpty() ||
+//            jTextField3.getText().trim().isEmpty() ||
+//            jTextField4.getText().trim().isEmpty() ||
+//            jTextField5.getText().trim().isEmpty()) {
+//            
+//            JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return false;
+//        }
+//        return true; 
+//    }
 
 //    public static void main(String args[]) {
 //

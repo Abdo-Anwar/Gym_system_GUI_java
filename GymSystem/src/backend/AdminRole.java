@@ -4,9 +4,14 @@ import java.util.ArrayList;
 
 
 public class AdminRole {
-    private TrainerDatabase dataBaseNew = new TrainerDatabase("src/backend/Trainers.txt");
 
-    public AdminRole(){ }
+    private TrainerDatabase trainerDatabase;
+    public AdminRole()
+    {
+         this.trainerDatabase = new TrainerDatabase("src/backend/Trainers.txt");
+         this.trainerDatabase.readFromFile();
+
+    }
     
     public void addTrainer(String traineId,String name ,String email,String specialty,String phoneNumber){
     if (!DataValidator.isValidID(traineId)) {
@@ -36,16 +41,16 @@ public class AdminRole {
         
         
         Trainer t= new Trainer(traineId, name, email, phoneNumber, specialty);
-        if(dataBaseNew.contains(traineId)){
-            System.out.println("this tranier already exict.");
+        if(trainerDatabase.contains(traineId)){
+            System.out.println("this tranier already exist.");
         }else{
-            dataBaseNew.insertRecord(t);
+            trainerDatabase.insertRecord(t);
         }
      }
     public ArrayList<Trainer> getListOfTrainers(){
         
         ArrayList<Trainer> TrainerList= new ArrayList<>();
-        TrainerList = dataBaseNew.returnAllRecords();
+        TrainerList = trainerDatabase.returnAllRecords();
         return TrainerList;
     }
     public void removeeTrainer(String key){
@@ -54,13 +59,13 @@ public class AdminRole {
         return;
     }
         
-        if(!(dataBaseNew.contains(key))){
+        if(!(trainerDatabase.contains(key))){
             System.out.println("this key doesn't exist "+key );
         }else{
-            dataBaseNew.deleteRecord(key);
+            trainerDatabase.deleteRecord(key);
                     }
     }
     public void logout(){
-    dataBaseNew.saveToFile();
+    trainerDatabase.saveToFile();
     }
 }
