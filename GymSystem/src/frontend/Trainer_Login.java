@@ -2,7 +2,7 @@ package frontend;
 
 import constants.LoginCredentials;
 import javax.swing.JOptionPane;
-
+import backend.TrainerRole;
 public class Trainer_Login extends javax.swing.JFrame implements LoginCredentials {
 
     /**
@@ -115,6 +115,10 @@ public class Trainer_Login extends javax.swing.JFrame implements LoginCredential
     
      if (username.equals(TRAINER_USERNAME) && password.equals(TRAINER_PASSWORD)) {
             JOptionPane.showMessageDialog(this, "Login Successful!");
+            TrainerRole trainer = new TrainerRole();
+            new Trainer_RoleGUI(trainer).setVisible(true);
+                        this.dispose();
+
         } else {
             JOptionPane.showMessageDialog(this, "Invalid username or password", "Login Error", JOptionPane.ERROR_MESSAGE);
             
@@ -132,37 +136,8 @@ public class Trainer_Login extends javax.swing.JFrame implements LoginCredential
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Trainer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Trainer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Trainer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Trainer_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Trainer_Login().setVisible(true);
-            }
-        });
-    }
+   
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField PassTExtField;
