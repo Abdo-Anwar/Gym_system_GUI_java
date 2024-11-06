@@ -72,6 +72,7 @@ public class View_class extends javax.swing.JFrame {
                 "class Id", "class Name", "Trainer id ", "Durartion", "Max Participants"
             }
         ));
+        jTable1.setToolTipText("view class");
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

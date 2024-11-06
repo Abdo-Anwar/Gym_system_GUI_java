@@ -65,6 +65,7 @@ public class View_Members extends javax.swing.JFrame {
                 "Id", "Name", "Email", "MemberShip Type", "Phone Number", "Status"
             }
         ));
+        jTable1.setToolTipText("view member");
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
