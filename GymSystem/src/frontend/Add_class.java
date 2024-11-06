@@ -254,7 +254,8 @@ public class Add_class extends javax.swing.JFrame
 
             }
         }
-
+        new Trainer_RoleGUI(trainerRole).setVisible(true);
+        this.dispose();
     }
     private boolean validateFields() {
         if (jTextField1.getText().trim().isEmpty() ||

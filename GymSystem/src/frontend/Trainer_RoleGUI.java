@@ -83,12 +83,22 @@ public class Trainer_RoleGUI extends javax.swing.JFrame {
         jButton6.setText("View Registaition");
         jButton6.setToolTipText("View_Registaition_PushButton");
         jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(102, 102, 102));
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Logout");
         jButton7.setToolTipText("Logout_PushButton");
         jButton7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setBackground(new java.awt.Color(102, 102, 102));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
@@ -187,16 +197,19 @@ public class Trainer_RoleGUI extends javax.swing.JFrame {
          new Registeer_member(this.trainer).setVisible(true);
        this.setVisible(false);    // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
-       new View_registrations(this.trainer).setVisible(true);
-       this.setVisible(false);// TODO add your handling code here:
-    }
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
-        this.trainer.logout();// TODO add your handling code here:
-    }
-    /**
-     * @param args the command line arguments
-     */
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        new View_registrations(this.trainer).setVisible(true);
+       this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        this.trainer.logout();
+    }//GEN-LAST:event_jButton7ActionPerformed
+  
+   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
