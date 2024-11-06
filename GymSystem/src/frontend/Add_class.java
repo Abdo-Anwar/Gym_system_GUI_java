@@ -250,12 +250,13 @@ public class Add_class extends javax.swing.JFrame
                 } else {
                     trainerRole.addClass(this.classId, this.className, this.trainerId, this.Duration, this.maxParticipants);
                     JOptionPane.showMessageDialog(this, " Class is added successfully !! ");
+                    new Trainer_RoleGUI(trainerRole).setVisible(true);
+                    this.dispose();
                 }
 
             }
         }
-        new Trainer_RoleGUI(trainerRole).setVisible(true);
-        this.dispose();
+        
     }
     private boolean validateFields() {
         if (jTextField1.getText().trim().isEmpty() ||

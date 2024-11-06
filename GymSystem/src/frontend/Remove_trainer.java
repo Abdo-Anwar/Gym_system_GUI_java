@@ -124,12 +124,13 @@ public class Remove_trainer extends javax.swing.JFrame {
 
             if (updatedSize < initialSize) {  
                 JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " has been successfully deleted", "Message", JOptionPane.INFORMATION_MESSAGE);
+            new AdminRoleGui(admin).setVisible(true);
+            this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Failed to delete Trainer with Id = " + id+"faild to removve", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-            new AdminRoleGui(admin).setVisible(true);
-            this.dispose();
+           
         } else {
             JOptionPane.showMessageDialog(this, "The Trainer with Id = " + id + " does not exist!", "Message", JOptionPane.INFORMATION_MESSAGE);
         }

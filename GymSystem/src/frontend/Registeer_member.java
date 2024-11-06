@@ -188,6 +188,8 @@ public class Registeer_member extends javax.swing.JFrame {
                                 {
                                     this.trainerRole.registerMemberForClass(this.memberID, this.classID, this.registrationDate);
                                     JOptionPane.showMessageDialog(this, " Member is added successfully !! ");
+                               new Trainer_RoleGUI(trainerRole).setVisible(true);
+        this.dispose();
                                 }
 
             }

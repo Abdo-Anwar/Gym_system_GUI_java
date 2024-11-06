@@ -163,6 +163,8 @@ public class cancel_reg extends javax.swing.JFrame {
                     else {
                         this.trainerRole.cancelRegistration(this.memberId, this.classId);
                         JOptionPane.showMessageDialog(this, " Member is added successfully !! ");
+                     new Trainer_RoleGUI(trainerRole).setVisible(true);
+        this.dispose();
                     }
 
                 }

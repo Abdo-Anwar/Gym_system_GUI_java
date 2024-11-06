@@ -259,6 +259,8 @@ public class Add_member extends javax.swing.JFrame {
                                 {
                                     this.trainerRole.addMember(this.id, this.name, this.email, this.phoneNumber, this.membershipType, this.status);
                                     JOptionPane.showMessageDialog(this, " Member is added successfully !! ");
+                                     new Trainer_RoleGUI(trainerRole).setVisible(true);
+        this.dispose();
                                 }
 
             }
