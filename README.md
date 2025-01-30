@@ -72,7 +72,7 @@ To run the **Gym Membership Management System** locally, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/gym-management-system.git
+   git clone https://github.com/Abdo-Anwar/Gym_system_GUI_java.git
 2. **Navigate to the project directory:**:
    ```bash
    cd cd gym-management-system
