@@ -5,7 +5,6 @@
 **Gym Membership Management System** is a desktop application built using **Java** and **Java Swing**. It allows gym administrators and trainers to manage members, trainers, classes, and registrations efficiently. The system supports features like adding/removing trainers and members, managing classes, registering members for classes, and handling cancellations. This project was developed as part of the **Programming II** course at Alexandria University, Faculty of Engineering.
 
 ---
-
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Features](#features)
@@ -17,8 +16,10 @@
 8. [Additional Features](#additional-features)
 9. [File Handling](#file-handling)
 10. [Validation](#validation)
-11. [License](#license)
-12. [Contact](#contact)
+11. [Contributors](#contributors)
+12. [License](#license)
+13. [Contact](#contact)
+
 
 ---
 
@@ -188,7 +189,60 @@ The system implements the following validations:
    - Admin and trainer logins require valid credentials.
 
 ---
+## Contributing
+We welcome contributions to the **Gym Membership Management System**! If you'd like to contribute, please follow these steps:
 
+1. **Fork the Repository**:
+   - Fork the project repository to your GitHub account.
+
+2. **Clone the Repository**:
+   - Clone the forked repository to your local machine:
+     ```bash
+     git clone https://github.com/Abdo-Anwar/Gym_system_GUI_java.git
+     ```
+
+3. **Create a New Branch**:
+   - Create a new branch for your feature or bug fix:
+     ```bash
+     git checkout -b feature/your-feature-name
+     ```
+
+4. **Make Changes**:
+   - Make your changes and ensure the code is clean, readable, and well-commented.
+
+5. **Commit Your Changes**:
+   - Commit your changes with a descriptive commit message:
+     ```bash
+     git commit -m "Add: Your feature description"
+     ```
+
+6. **Push to GitHub**:
+   - Push your changes to your forked repository:
+     ```bash
+     git push origin feature/your-feature-name
+     ```
+
+7. **Create a Pull Request**:
+   - Open a pull request from your branch to the main repository. Provide a detailed description of your changes.
+
+---
+
+## Contributors
+This project was developed collaboratively by:
+
+- **[Abdelrhman Anwar](https://github.com/Abdo-Anwar)**:
+  - Core backend and GUI development.
+  - Implemented additional features like validation and error handling.
+  - Designed the UML diagrams and system architecture.
+
+- **[Yassen Islam](https://github.com/yaseen20051)**:
+  - Contributed to the GUI design and implementation.
+  - Assisted in debugging and testing the system.
+  - Helped with file handling and data persistence.
+
+We appreciate all contributions and feedback! If you'd like to contribute, feel free to reach out to us.
+
+---
 ## License
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
@@ -197,8 +251,13 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 ## Contact
 For questions, feedback, or collaboration, feel free to reach out:
 
-- **Email**: [abd.ahm.anwar@gmail.com](mailto:abd.ahm.anwar@gmail.com)
-- **GitHub**: [Abdo-Anwar](https://github.com/Abdo-Anwar)
-- **LinkedIn**: [abdelrhman-anwar](https://www.linkedin.com/in/abdelrhman-anwar)
+- **Abdelrhman Anwar**:
+  - **Email**: [abd.ahm.anwar@gmail.com](mailto:abd.ahm.anwar@gmail.com)
+  - **GitHub**: [Abdo-Anwar](https://github.com/Abdo-Anwar)
+  - **LinkedIn**: [abdelrhman-anwar](https://www.linkedin.com/in/abdelrhman-anwar)
+
+- **Yassen Islam**:
+  - **GitHub**: [yaseen20051](https://github.com/yaseen20051)
+  - **LinkedIn**: [Yassen Islam](https://www.linkedin.com/in/yassen-islam)
 
 ---
